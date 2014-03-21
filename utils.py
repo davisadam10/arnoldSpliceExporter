@@ -20,6 +20,10 @@ class NodeExport(object):
         attr.value = value
         self.attrs.append(attr)
 
+class MayaSpliceArnoldExporter(NodeExport):
+    def __init__(self):
+        #template
+
 allNodes = []
 for node in nodes:
     exportNode = NodeExport(node, cmds.nodeType(node))
