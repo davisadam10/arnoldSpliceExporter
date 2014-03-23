@@ -1,0 +1,6 @@
+ambient_occlusion
+{
+  
+  name <name>
+  samples <samples>
+}

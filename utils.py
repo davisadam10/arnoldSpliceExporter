@@ -12,6 +12,7 @@ class ArnoldAssTemplate(object):
         self.baseTemplate = os.path.join(TEMPLATE_DIR, "mainTemplate.ass")
         self.procedurals = []
         self.camera = None
+        self.shaders = None
         self.options = None
 
     def addProcedural(self, node):
@@ -22,7 +23,7 @@ class ArnoldAssTemplate(object):
         
         returnDict["<CAMERA>"] = self.camera.getAssCode()
         returnDict["<OPTIONS>"] = self.options.getAssCode()
-
+        returnDict["<SHADERS>"] = self.shaders.getAssCode()
         proceduralAssCode = ""
         for node in self.procedurals:
             proceduralAssCode += "%s\n" % (node.getAssCode())
@@ -78,6 +79,7 @@ class NodeExport(object):
         self.name = name
         self.type = type
         self.attrs = []
+        self.shader = None
         self.worldMatrix = [1.0, 0.0, 0.0, 0.0,
                             0.0, 1.0, 0.0, 0.0,
                             0.0, 0.0, 1.0, 0.0,
@@ -127,6 +129,7 @@ class MayaSpliceArnoldExporter(NodeExport):
         renderDict["<name>"] = self.name
         renderDict["<spliceFile>"] = self.spliceFile
         renderDict["<worldMatrix>"] = self.worldMatrix
+        renderDict["<shader>"] = self.shader
         renderDict["<variables>"] = variableCode
 
         return self.renderTemplate(self.template, renderDict)
@@ -160,6 +163,20 @@ class ArnoldOptionsExporter(NodeExport):
     def getAssCode(self):
         renderDict = {}
         renderDict["<cameraName>"] = self.cameraName
+        return self.renderTemplate(self.template, renderDict)
+
+
+class AmbientShaderExporter(NodeExport):
+    def __init__(self, name, type):
+        NodeExport.__init__(self, name, type)
+        self.template = "ambient_occlusion.txt"
+        self.shaderName = name
+        self.samples = 10
+
+    def getAssCode(self):
+        renderDict = {}
+        renderDict["<name>"] = self.shaderName
+        renderDict["<samples>"] = self.samples
         return self.renderTemplate(self.template, renderDict)
 
 
@@ -214,8 +231,12 @@ options = ArnoldOptionsExporter("renderOptions", "renderOptions")
 options.cameraName = camera.name 
 assTemplate.options = options
 
+ambientShader = AmbientShaderExporter("ambientShader", "ambientShader")
+assTemplate.shaders = ambientShader
+
 procedurals = getSceneProcedurals()
 for procedural in procedurals:
+    procedural.shader = ambientShader.name
     assTemplate.addProcedural(procedural)
 
 

@@ -6,8 +6,8 @@ procedural
  load_at_init on
  matrix 
   <worldMatrix>
- shader "standardColor"
+ shader "<shader>"
  declare procedural_shader constant ARRAY NODE
- procedural_shader "standardColor" 
+ procedural_shader "<shader>" 
  <variables>
 }

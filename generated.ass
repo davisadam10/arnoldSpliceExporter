@@ -57,7 +57,7 @@ persp_camera
  name perspShape
  fov 55.0000700282 
  matrix 
-  0.066273900399995256  0.0  0.9978014682920503  0.0  0.26393709496959933  0.96438057066176397  -0.017530682505229104  0.0  -0.96226034939863359  0.26451864760370003  0.06391326188772839  0.0  -32.300705391033702  9.3719044484395084  1.9195901417185741  1.0
+  -0.031410759078130956  -1.6653345369377348e-16  0.99950656036573149  0.0  0.54053663719821077  0.84114896661710858  0.016987048166770879  0.0  -0.84073391037865564  0.54080349107505798  -0.026421127539228539  0.0  -20.695917258621261  18.656299851117211  -0.65051329928797785  1.0
  near_clip 0.1
  far_clip 100000.0
 }
@@ -124,17 +124,21 @@ procedural
  load_at_init on
  matrix 
   1.0  0.0  0.0  0.0  0.0  1.0  0.0  0.0  0.0  0.0  1.0  0.0  0.0  0.0  0.0  1.0
- shader "standardColor"
+ shader "ambientShader"
  declare procedural_shader constant ARRAY NODE
- procedural_shader "standardColor" 
+ procedural_shader "ambientShader" 
  declare angleA constant FLOAT
 angleA 1.6
 declare angleB constant FLOAT
 angleB 2.0
 declare angleC constant FLOAT
 angleC 6.28000020981
-declare moveA constant VECTOR
-moveA 40.0 50.0 12.0
+declare moveA_x constant FLOAT
+moveA_x 40.0
+declare moveA_y constant FLOAT
+moveA_y 50.0
+declare moveA_z constant FLOAT
+moveA_z 12.0
 declare nbSpheres constant INT
 nbSpheres 150
 declare offsetMat constant MATRIX
@@ -154,6 +158,13 @@ thickness 0.10000000149
 
 }
 
+
+ambient_occlusion
+{
+  
+  name ambientShader
+  samples 10
+}
 
 standard
 {

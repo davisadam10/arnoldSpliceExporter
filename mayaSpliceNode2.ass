@@ -127,9 +127,9 @@ procedural
  load_at_init on
  matrix 
   1.0  0.0  0.0  0.0  0.0  1.0  0.0  0.0  0.0  0.0  1.0  0.0  0.0  0.0  0.0  1.0
- shader "standardColor"
+ shader "adamShader"
  declare procedural_shader constant ARRAY NODE
- procedural_shader "standardColor" 
+ procedural_shader "adamShader" 
  declare angleA constant FLOAT
 angleA 1.6
 declare angleB constant FLOAT
@@ -159,6 +159,13 @@ spans2 12
 declare thickness constant FLOAT
 thickness 0.10000000149
 
+}
+
+ambient_occlusion
+{
+  
+  name adamShader
+  samples 10
 }
 
 standard
