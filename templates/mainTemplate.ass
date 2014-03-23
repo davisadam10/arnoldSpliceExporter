@@ -1,0 +1,114 @@
+### exported: Tue Jul 02 15:44:32 2013
+### from:     Arnold 4.0.12.0.test1 windows icc130 oiio1015 rlm944 (build date: Feb 22 2013 14:44:12)
+### host app: SItoA 2.6.0 win Softimage 11.0.525.0
+
+<OPTIONS>
+
+gaussian_filter
+{
+ name sitoa_output_filter
+}
+
+closest_filter
+{
+ name sitoa_closest_filter
+}
+
+driver_jpeg
+{
+ name Passes.Default_Pass.Main
+ filename "test.jpg"
+}
+
+<CAMERA>
+
+sky
+{
+ name Passes.Default_Pass.sky.SItoA.1000.1
+ color 0.75999999 1 0.978399992
+ intensity 1.403999984
+ opaque_alpha off
+}
+
+point_light
+{
+ name Point.SItoA.1000
+ radius 30
+ matrix 
+  1 0 0 0
+  0 1 0 0
+  0 0 1 0
+  -12.6470661 17.7053356 10.8591356 1 
+ exposure 8
+ samples 2
+}
+
+point_light
+{
+ name Point1.SItoA.1000
+ radius 10
+ matrix 
+  1 0 0 0
+  0 1 0 0
+  0 0 1 0
+  -14.6114626 6.48652124 -14.8924799 1 
+ exposure 4.88700008
+ samples 2
+}
+
+point_light
+{
+ name Point2.SItoA.1000
+ radius 30
+ matrix 
+  1 0 0 0
+  0 1 0 0
+  0 0 1 0
+  24.274147 17.7053356 -3.97911882 1 
+ exposure 8
+ samples 2
+}
+
+plane
+{
+ name plane1
+ shader "standardFloor" 
+ normal 0 1 0
+}
+  
+<PROCEDURAL>
+
+standard
+{
+ name standardColor
+ Kd_color 0.986000013 0.084332001 0.1
+ Ks 1
+ Ks_color 0.152954996 0.39437443 0.441044986
+ specular_roughness 0.466904998
+ aov_emission "Arnold_Emission"
+ aov_direct_diffuse "Arnold_Direct_Diffuse"
+ aov_direct_specular "Arnold_Direct_Specular"
+ aov_indirect_diffuse "Arnold_Indirect_Diffuse"
+ aov_indirect_specular "Arnold_Indirect_Specular"
+ aov_reflection "Arnold_Reflection"
+ aov_refraction "Arnold_Refraction"
+ aov_sss "Arnold_SSS"
+}
+
+standard
+{
+ name standardFloor
+ Kd 0.0560000017
+ Ks 1
+ Ks_color 0.347000003 0.347000003 0.347000003
+ specular_roughness 0.466904998
+ aov_emission "Arnold_Emission"
+ aov_direct_diffuse "Arnold_Direct_Diffuse"
+ aov_direct_specular "Arnold_Direct_Specular"
+ aov_indirect_diffuse "Arnold_Indirect_Diffuse"
+ aov_indirect_specular "Arnold_Indirect_Specular"
+ aov_reflection "Arnold_Reflection"
+ aov_refraction "Arnold_Refraction"
+ aov_sss "Arnold_SSS"
+}
+

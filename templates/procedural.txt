@@ -1,0 +1,13 @@
+procedural
+{
+ name <name>
+ dso "FabricSpliceArnold"
+ data "<spliceFile>"
+ load_at_init on
+ matrix 
+  <worldMatrix>
+ shader "standardColor"
+ declare procedural_shader constant ARRAY NODE
+ procedural_shader "standardColor" 
+ <variables>
+}

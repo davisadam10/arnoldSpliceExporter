@@ -1,0 +1,33 @@
+options
+{
+ name options
+ AA_samples 10
+ error_color_bad_pixel 0 1 0
+ outputs 
+  "RGBA RGBA sitoa_output_filter Passes.Default_Pass.Main" 
+ xres 1280
+ yres 720
+ aspect_ratio 1.00000012
+ bucket_scanning "spiral"
+ texture_max_memory_MB 999999
+ texture_searchpath ""
+ texture_automip off
+ texture_autotile 0
+ camera "<cameraName>"
+ background "Passes.Default_Pass.sky.SItoA.1000.1"
+ shadows_obey_light_linking on
+ sss_subpixel_cache on
+ procedural_searchpath "[FABRIC_SPLICEARNOLD_ROOT]"
+ shader_searchpath ""
+ GI_diffuse_depth 1
+ GI_glossy_depth 1
+ GI_diffuse_samples 3
+ declare texture_filter constant INT
+ texture_filter 3
+ declare ambience constant RGB
+ ambience 0 0 0
+ declare frame constant FLOAT
+ frame 1
+ declare fps constant FLOAT
+ fps 24
+}

@@ -1,0 +1,197 @@
+### exported: Tue Jul 02 15:44:32 2013
+### from:     Arnold 4.0.12.0.test1 windows icc130 oiio1015 rlm944 (build date: Feb 22 2013 14:44:12)
+### host app: SItoA 2.6.0 win Softimage 11.0.525.0
+
+options
+{
+ name options
+ AA_samples 10
+ error_color_bad_pixel 0 1 0
+ outputs 
+  "RGBA RGBA sitoa_output_filter Passes.Default_Pass.Main" 
+ xres 1280
+ yres 720
+ aspect_ratio 1.00000012
+ bucket_scanning "spiral"
+ texture_max_memory_MB 999999
+ texture_searchpath ""
+ texture_automip off
+ texture_autotile 0
+ camera "Camera.SItoA.1000"
+ background "Passes.Default_Pass.sky.SItoA.1000.1"
+ shadows_obey_light_linking on
+ sss_subpixel_cache on
+ procedural_searchpath "[FABRIC_SPLICEARNOLD_ROOT]"
+ shader_searchpath ""
+ GI_diffuse_depth 1
+ GI_glossy_depth 1
+ GI_diffuse_samples 3
+ declare texture_filter constant INT
+ texture_filter 3
+ declare ambience constant RGB
+ ambience 0 0 0
+ declare frame constant FLOAT
+ frame 1
+ declare fps constant FLOAT
+ fps 24
+}
+
+gaussian_filter
+{
+ name sitoa_output_filter
+}
+
+closest_filter
+{
+ name sitoa_closest_filter
+}
+
+driver_jpeg
+{
+ name Passes.Default_Pass.Main
+ filename "test.jpg"
+}
+
+persp_camera
+{
+ name Camera.SItoA.1000
+ fov 53.6380005 
+ matrix 
+  0.702649951 -1.60868541e-009 -0.711535692 0
+  -0.48007068 0.738095164 -0.474075526 0
+  0.525181055 0.674696565 0.518622577 0
+  28.2991581 36.8378105 25.7813835 1 
+ near_clip 0.100000001
+ far_clip 32768
+}
+
+sky
+{
+ name Passes.Default_Pass.sky.SItoA.1000.1
+ color 0.75999999 1 0.978399992
+ intensity 1.403999984
+ opaque_alpha off
+}
+
+point_light
+{
+ name Point.SItoA.1000
+ radius 30
+ matrix 
+  1 0 0 0
+  0 1 0 0
+  0 0 1 0
+  -12.6470661 17.7053356 10.8591356 1 
+ exposure 8
+ samples 2
+}
+
+point_light
+{
+ name Point1.SItoA.1000
+ radius 10
+ matrix 
+  1 0 0 0
+  0 1 0 0
+  0 0 1 0
+  -14.6114626 6.48652124 -14.8924799 1 
+ exposure 4.88700008
+ samples 2
+}
+
+point_light
+{
+ name Point2.SItoA.1000
+ radius 30
+ matrix 
+  1 0 0 0
+  0 1 0 0
+  0 0 1 0
+  24.274147 17.7053356 -3.97911882 1 
+ exposure 8
+ samples 2
+}
+
+plane
+{
+ name plane1
+ shader "standardFloor" 
+ normal 0 1 0
+}
+  
+procedural
+{
+ name spliceMayaNode2
+ dso "FabricSpliceArnold"
+ data "spliceMayaNode2.splice"
+ load_at_init on
+ matrix 
+  1.0  0.0  0.0  0.0  0.0  1.0  0.0  0.0  0.0  0.0  1.0  0.0  0.0  0.0  0.0  1.0
+ shader "standardColor"
+ declare procedural_shader constant ARRAY NODE
+ procedural_shader "standardColor" 
+ declare angleA constant FLOAT
+angleA 1.6
+declare angleB constant FLOAT
+angleB 2.42169928551
+declare angleC constant FLOAT
+angleC 6.28000020981
+declare moveA_x constant FLOAT
+moveA_x 20.0
+declare moveA_y constant FLOAT
+moveA_y 0.0
+declare moveA_z constant FLOAT
+moveA_z 0.0
+declare nbSpheres constant INT
+nbSpheres 5
+declare offsetMat constant MATRIX
+offsetMat 1.0  0.0  0.0  0.0  0.0  1.0  0.0  0.0  0.0  0.0  1.0  0.0  1.0  0.0  0.0  1.0
+declare rootMat constant MATRIX
+rootMat 1.0  0.0  0.0  0.0  0.0  1.0  0.0  0.0  0.0  0.0  1.0  0.0  0.0  0.0  0.0  1.0
+declare scaleFactor constant FLOAT
+scaleFactor 0.899999976158
+declare shells constant INT
+shells 36
+declare spans constant INT
+spans 11
+declare spans2 constant INT
+spans2 12
+declare thickness constant FLOAT
+thickness 0.10000000149
+
+}
+
+standard
+{
+ name standardColor
+ Kd_color 0.986000013 0.084332001 0.1
+ Ks 1
+ Ks_color 0.152954996 0.39437443 0.441044986
+ specular_roughness 0.466904998
+ aov_emission "Arnold_Emission"
+ aov_direct_diffuse "Arnold_Direct_Diffuse"
+ aov_direct_specular "Arnold_Direct_Specular"
+ aov_indirect_diffuse "Arnold_Indirect_Diffuse"
+ aov_indirect_specular "Arnold_Indirect_Specular"
+ aov_reflection "Arnold_Reflection"
+ aov_refraction "Arnold_Refraction"
+ aov_sss "Arnold_SSS"
+}
+
+standard
+{
+ name standardFloor
+ Kd 0.0560000017
+ Ks 1
+ Ks_color 0.347000003 0.347000003 0.347000003
+ specular_roughness 0.466904998
+ aov_emission "Arnold_Emission"
+ aov_direct_diffuse "Arnold_Direct_Diffuse"
+ aov_direct_specular "Arnold_Direct_Specular"
+ aov_indirect_diffuse "Arnold_Indirect_Diffuse"
+ aov_indirect_specular "Arnold_Indirect_Specular"
+ aov_reflection "Arnold_Reflection"
+ aov_refraction "Arnold_Refraction"
+ aov_sss "Arnold_SSS"
+}
+

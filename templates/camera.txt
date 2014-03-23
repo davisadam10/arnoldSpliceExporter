@@ -1,0 +1,9 @@
+persp_camera
+{
+ name <name>
+ fov <fov> 
+ matrix 
+  <worldMatrix>
+ near_clip <nearClip>
+ far_clip <farClip>
+}
